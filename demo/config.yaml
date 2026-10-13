@@ -1,0 +1,20 @@
+# Merlin TTS -- Alexander the Summoner's Fork :: starter profile
+# Usage: python merlin_cli.py this_file.yaml --dry-run
+
+data_setup:
+  # Base directory that relative file paths resolve against
+  base_data_dir: "demo/data"
+  # Each entry accepts: a list of files, a .scp/.txt manifest, or a directory
+  # (directories are scanned for .bin / .cmp files)
+  train_x_files: "train/x"
+  train_y_files: "train/y"
+  valid_x_files: "valid/x"
+  valid_y_files: "valid/y"
+
+training:
+  epochs: 50
+  learning_rate: 0.001
+  batch_size: 128
+
+output:
+  work_dir: "demo/merlin_run"

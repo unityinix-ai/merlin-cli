@@ -1,0 +1,33 @@
+# Merlin TTS -- Alexander the Summoner's Fork :: summoner voice profile
+# Usage: python merlin_cli.py data/summoner_voice.yaml --dry-run
+#
+# DATA PIPELINE (honest state):
+#   [DONE] raw_wav/      -- 9 real-voice recordings, 16kHz mono WAV
+#                          (voice notes, updates, speaker sessions)
+#   [TODO] labels/       -- transcripts + phoneme alignments (.lab)
+#                          needs: transcripts + forced aligner (MFA)
+#   [TODO] features/     -- WORLD acoustic (.cmp) + linguistic (.bin)
+#                          needs: Edinburgh Merlin toolchain
+#   [TODO] training      -- needs: training_backend + features above
+#
+# The CLI resolves train_x/train_y from processed features.
+# Until labels/features exist, dry-run truthfully reports zero --
+# that is the warden reporting the real state, not a failure.
+
+data_setup:
+  base_data_dir: "data"
+  # Raw voice material (staged, not yet training-ready):
+  raw_wav_dir: "raw_wav"
+  # Processed features (empty until the pipeline runs):
+  train_x_files: "features/train_x"
+  train_y_files: "features/train_y"
+  valid_x_files: []
+  valid_y_files: []
+
+training:
+  epochs: 50
+  learning_rate: 0.001
+  batch_size: 128
+
+output:
+  work_dir: "data/merlin_run"
