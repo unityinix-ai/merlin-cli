@@ -1,0 +1,5 @@
+__pycache__/
+*.pyc
+data/raw_wav/
+data/merlin_run/
+demo/merlin_run/
